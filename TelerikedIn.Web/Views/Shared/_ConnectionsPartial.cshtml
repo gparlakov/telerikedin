@@ -1,0 +1,11 @@
+﻿@using TelerikedIn.Model
+
+@model List<UserProfile>
+
+@foreach (var user in Model)
+{
+    <div id="partial-user-profile" >
+        <h4><a href="@user.UserId" >@user.UserName </a></h4>
+    </div>
+}
+

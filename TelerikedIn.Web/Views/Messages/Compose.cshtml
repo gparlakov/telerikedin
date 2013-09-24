@@ -1,0 +1,18 @@
+﻿@model TelerikedIn.Model.MessageComposeViewModel
+
+@{
+    ViewBag.Title = "ComposeView";
+}
+
+<h2>ComposeView</h2>
+@using(@Html.BeginForm("Send","Messages", FormMethod.Post))
+{    
+    @Html.LabelFor(model => model.Title);
+    @Html.EditorFor(model => model.Title);
+    
+    @Html.LabelFor(model=>model.Recipients)
+    @Html.Kendo().AutoCompleteFor(model => model.Recipients).Name("recipients").Placeholder("Add recipients separated by ', '").BindTo(Model.Recipients).Separator(", ").HtmlAttributes(new { id = "autocomplete-usernames"})
+
+    @Html.Kendo().EditorFor(model => model.Content).Name("content")
+    <input type="submit" name="sendMessage" value="Send Message" />
+}

@@ -1,0 +1,53 @@
+﻿@model TelerikedIn.Model.BrowseProfileViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("DoEdit", "PublicProfile", FormMethod.Post, new { id = "do-edit-form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>PublicUserProfile</legend>
+        
+        @Html.Partial("_PublicProfileEditableFieldsPartial", Model.UserProfileToBrowse)        
+        
+        <p>
+            <input type="submit" class="buton medium" value="Save Changes" />
+        </p>  
+
+        <hr />
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Skills)
+        </div>
+        <div class="display-field">
+            @Html.Partial("_SkillsPartial", 
+                new SkillsEndorsmentsViewModel
+                    { 
+                        Skills = Model.Skills, 
+                        Endorsments = Model.Endorsments,
+                        IsOwnProfile = true 
+                    })
+        </div>
+    </fieldset>
+    
+    <div class="display-label">
+            @Html.LabelFor(model => model.Connections)
+        </div>
+        <div class="display-field">
+            @Html.Partial("_ConnectionsPartial", 
+                new ConnectionsViewModel 
+                    { 
+                        Connections = Model.Connections,
+                        IsOwnProfile = true 
+                    })
+        </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

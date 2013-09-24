@@ -1,0 +1,8 @@
+﻿@model ConfirmationMessage (TelerikedIn.Web.Areas.Admin.Models)
+@if (Model.Message == null)
+{
+    Model.Message = "Ok!"		 
+}
+
+<div class="confirmation">@Model.Message</div>
+

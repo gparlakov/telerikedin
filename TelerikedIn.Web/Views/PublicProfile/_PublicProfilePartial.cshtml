@@ -1,0 +1,13 @@
+﻿@model TelerikedIn.Model.PublicProfilePartialViewModel
+
+<div id="public-profile-partial">
+    @if (!Model.IsOwnProfile)
+    {
+        <h3>@Model.Name</h3>
+    }
+    else
+    {
+        <h3>@Html.ActionLink(@Model.Name, "BrowseUserProfile/" + @Model.UserIdToBrowse)</h3>    
+    }
+    <p>@Model.Occupation</p>   
+</div>

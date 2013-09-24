@@ -1,0 +1,23 @@
+﻿@using TelerikedIn.Model
+
+@model List<PublicUserProfile>
+
+@{
+    ViewBag.Title = "_FoundConnectionsPartial";
+}
+
+@foreach (var profile in Model)        
+{
+    <div class="float-left" id="@("profile-to-add-"+ profile.UserId)">       
+	    @Html.Partial("_PublicProfilePartial", 
+        new PublicProfilePartialViewModel 
+            { 
+                Name = profile.LastName + ", " + profile.FirstName,
+                Occupation = profile.Occupation,
+                UserIdToBrowse = profile.UserId, 
+                IsOwnProfile = false 
+            })
+        <a href="#" data-user="@profile.UserId">Add user</a>
+    </div>
+}   
+  

@@ -1,0 +1,135 @@
+﻿@model TelerikedIn.Model.BrowseProfileViewModel
+
+@{
+    ViewBag.Title = "BrowseUserProfile";
+}
+
+<h2>BrowseUserProfile</h2>
+
+ @*Can edit if own profile*@
+<div id="edit-public-profile-wrapper" class="clear-fix">
+    @{
+        if (Model.IsOwnProfile)
+        {               
+            <a href ="../Edit" id ="edit-link" class="button medium">Edit Profile</a>
+        
+            <div class="display-label" >
+                Notifications
+            </div>
+            <div>
+                @Html.Partial("_NotificationsPartial", Model.Notifications.ToList())
+            </div>
+        } 
+               
+    }    
+</div>
+
+<fieldset>
+    <legend>BrowseProfileViewModel</legend>
+
+    <div class="display-label">
+         Full Name
+    </div>
+    <div class="display-field">
+        @if (Model.UserProfileToBrowse.FirstNameHidden)
+        {
+            <p>Hidden</p>
+        }
+        else
+        {
+            @Model.UserProfileToBrowse.FirstName
+        } 
+         
+        @if (Model.UserProfileToBrowse.MiddleNameHidden)
+        {
+            <p>Hidden</p>
+        }
+        else
+        {
+            @Model.UserProfileToBrowse.MiddleName
+        } 
+         
+        @if (Model.UserProfileToBrowse.LastNameHidden)
+        {
+            <p>Hidden</p>
+        }
+        else
+        {
+            @Model.UserProfileToBrowse.LastName
+        }          
+    </div>
+
+     <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserProfileToBrowse.Occupation)
+    </div>
+    <div class="display-field">
+        @if (Model.UserProfileToBrowse.OccupationHidden)
+        {
+            <p>Hidden</p>
+        }
+        else
+        {
+            @Html.DisplayFor(model => model.UserProfileToBrowse.Occupation)
+        }  
+        
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserProfileToBrowse.Country)
+    </div>
+    <div class="display-field">
+        @if (Model.UserProfileToBrowse.CountryHidden)
+        {
+            <p>Hidden</p>
+        }
+        else
+        {
+            @Html.DisplayFor(model => model.UserProfileToBrowse.Country)
+        }        
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserProfileToBrowse.Industry)
+    </div>
+    <div class="display-field">
+        @if (Model.UserProfileToBrowse.IndustryHidden)
+        {
+            <p>Hidden</p>
+        }
+        else
+        {
+            @Html.DisplayFor(model => model.UserProfileToBrowse.Industry)
+        }
+    </div>
+
+    
+    <div class="display-label" >
+        @Html.DisplayNameFor(model => model.Skills)
+    </div>
+    <div class="display-field">
+        @Html.Partial("_SkillsPartial", 
+        new SkillsEndorsmentsViewModel 
+        { 
+            Skills = Model.Skills, 
+            Endorsments = Model.Endorsments, 
+            IsOwnProfile = Model.IsOwnProfile,
+            PublicProfileBeingBrowsed = Model.UserProfileToBrowse,
+            ProfileIdOfBrowsingUser = Model.ProfileIdOfBrowsingUser                        
+        })      
+    </div>    
+   
+</fieldset>
+
+@if (Model.Connections != null && Model.Connections.Count > 0)
+{
+    <div class="display-label" >
+        @Html.DisplayNameFor(model => model.Connections)
+    </div>
+    <div>
+        @Html.Partial("_ConnectionsPartial", new ConnectionsViewModel
+            {
+                Connections = Model.Connections,
+                IsOwnProfile = Model.IsOwnProfile
+            })
+    </div>
+}

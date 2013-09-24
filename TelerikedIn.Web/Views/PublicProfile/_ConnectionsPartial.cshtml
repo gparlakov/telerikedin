@@ -1,0 +1,41 @@
+﻿@*@using TelerikedIn.Model*@
+@model ConnectionsViewModel
+<section id="public-connections" class="clear-fix">
+    @if (Model.Connections.Count == 0)
+    {
+        if (Model.IsOwnProfile)
+        {
+            <div id="connections-view" class="clear-fix">
+                <p>You has no connections currently.</p>    
+            </div>
+        }
+        else
+        {
+            <div id="connections-view" class="clear-fix">
+                <p>User has no connections currently.</p>    
+            </div>
+        }
+    }
+    else
+    {
+        <div class="user-public-profile-partial-view clear-fix">
+            @foreach (var connection in Model.Connections)
+            {
+                @Html.Partial("_PublicProfilePartial", new PublicProfilePartialViewModel
+                    {
+                        Name = connection.ConnectionName,
+                        Occupation = connection.ConnectionOccupation,
+                        UserIdToBrowse = connection.ConnectionUserId,
+                        IsOwnProfile = Model.IsOwnProfile
+                    })
+            }
+        </div>
+    }
+</section>
+
+@if (ViewBag.Title == "Edit")
+{   
+    <a href="AddConnections" class ="button small">Add connections</a>
+}
+
+

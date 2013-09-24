@@ -1,0 +1,13 @@
+﻿@model IEnumerable<MessageViewModel>
+
+@{
+    ViewBag.Title = "MessagesView";
+}
+
+<h2>MessagesView</h2>
+
+@foreach (var message in Model)
+{
+    @Html.Partial("MessageViewPartial", message);
+}
+

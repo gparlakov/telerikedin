@@ -1,0 +1,82 @@
+﻿@model SkillsEndorsmentsViewModel
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>
+<script>
+    var disableButton = function (id) {
+        $('#' + id).attr("href", "#");
+    }
+</script>
+<div id="own-skills-container" class="clear-fix">
+    @if (Model.Skills.Count == 0)
+    {
+        if (Model.IsOwnProfile)
+        {
+            <p>You have not added any skills yet!</p>
+        }
+        else
+        {
+            <p>User has not added any skills yet!</p>  
+        }                 
+    }
+    else
+    {
+        foreach (var skill in Model.Skills)
+        {
+            <div id="skill-partial-view">
+                <div><h3 class="normal-padding">@skill.SkillName</h3>
+                     @{
+                        var counter = 0;
+                        var endorsedByCurrentUser = false;
+                        if (Model.Endorsments.Count > 0)
+                        {                       
+                            foreach (var item in Model.Endorsments)
+	                        {
+                                if (item.EndorsedSkillId == skill.Id)
+	                            {		                            
+                                    counter++;
+                                    if (item.EndorsedByUserProfileId == WebSecurity.CurrentUserId)
+                                    {
+                                        endorsedByCurrentUser = true;
+                                    }            	 
+	                            }
+                                
+	                        }
+                        }
+                        if (counter > 0)
+                        {
+                            <div id="number-endorsments">Endorsments: @counter</div>
+                        }
+                    }
+                </div>
+                
+
+                @if (!Model.IsOwnProfile && !endorsedByCurrentUser)
+                {
+                    <div id="button-holder-@skill.Id">
+                        @Ajax.ActionLink(
+                        "Endorse",
+                        "/Endorse/" + skill.Id + "/To/" + Model.PublicProfileBeingBrowsed.ProfileId,
+                        null,
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = "button-holder-"+skill.Id,
+                            InsertionMode = InsertionMode.Replace,
+                            HttpMethod = "Get",
+                            //OnSuccess = "disableButton('endorse-link" + skill.Id + "')",
+                        },
+                        new
+                        {
+                            id = "endorse-link" + skill.Id,
+                        })
+                    </div>
+                    @*<a href ="@("../Endorse/" + skill.Id + "/To/" + Model.PublicProfileBeingBrowsed.ProfileId)"> Endorse </a>*@
+                 
+                }	 
+            </div>
+        }
+    }
+</div>
+@if (ViewBag.Title == "Edit")
+{
+    <a href="AddSkills" class="button small">Add Skills</a>
+}
+

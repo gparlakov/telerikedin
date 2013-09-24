@@ -1,0 +1,21 @@
+﻿body>header{
+    height:90px;
+    padding-left:50px;
+    border-bottom: groove;
+	border-bottom-color:lightskyblue;
+    padding-right:100px;
+}
+
+#main-window{
+    text-align: center;	
+    min-height:350px;
+}
+
+#reset-user-password{
+    width:40%;
+    margin:0 auto;
+}
+
+.padding-25{
+    padding-bottom:25px;
+}

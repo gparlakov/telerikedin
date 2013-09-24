@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "AddConnections";
+}
+
+<h2>AddConnections</h2>
+ 
+<input type="search" id="search-string" name="searchString"  />      
+<input type="submit" id="submit-button" value="search" />
+<div id="result-search-connections">
+
+</div>
+<script>
+    $("#submit-button").click(function (e) {
+        e.preventDefault();
+
+        var searchInput = $("#search-string");
+        var searchString = searchInput.val();
+
+        if (searchString === undefined || searchString.trim() === '') {
+            searchInput.val("Empty search....");
+        }
+        else {
+            var resultContainer = $("#result-search-connections");
+            $.ajax({
+                url: "/PublicProfile/SearchPublicProfilesPartial/" + searchString,
+                success: function (result) {
+                    resultContainer.html(result);
+                },
+                error: function (error) {
+                    resultContainer.html(error.responseText);
+                },
+                
+            });            
+        }
+    });
+
+    $("#result-search-connections").on('click','a',function (e) {
+        e.preventDefault();
+
+        var userId = $(this).data("user");
+
+        $("#profile-to-add-" + userId).load("/PublicProfile/AddUserAsAConnection/" + userId);
+    });
+
+    </script>
+
+
+

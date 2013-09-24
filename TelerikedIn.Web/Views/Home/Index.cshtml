@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>          
+        </div>
+    </section>
+}
+<div id="explanation">
+    All accounts are username = password=> user:parlakov, pass:parlakov. Except for user:admin pass:123456, 
+</div>
+
+<div class="clear-fix" id="start-page-holder">
+    <div id="create-user-holder" class="float-left">
+        <a href="/PublicProfile/Create" class="button medium">Create user here</a>
+    </div>
+    <div id="browse-own-account" class="float-left">
+        <a href="/PublicProfile/BrowseOwnProfile" class = "button meduim">Go to your account </a>
+    </div>
+</div>

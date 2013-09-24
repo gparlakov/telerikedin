@@ -1,0 +1,154 @@
+﻿@model TelerikedIn.Model.PublicUserProfile
+<p style="text-align:right;">Check box to hide information from your public profile.</p>
+
+<div class="clear-fix">
+    <div class="left">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FirstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FirstName)
+            @Html.ValidationMessageFor(model => model.FirstName)
+        </div>
+    </div>
+
+    <div class="right">
+        <div class="editor-label">
+            @Html.Label("Hide First Name")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FirstNameHidden)
+            @Html.ValidationMessageFor(model => model.FirstNameHidden)
+        </div>
+    </div>
+</div >
+
+<div class="clear-fix">
+    <div class="left">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MiddleName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MiddleName)
+            @Html.ValidationMessageFor(model => model.MiddleName)
+        </div>
+    </div>
+
+    <div class="right">
+        <div class="editor-label">
+            @Html.Label("Hide Middle Name")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MiddleNameHidden)
+            @Html.ValidationMessageFor(model => model.MiddleNameHidden)
+        </div>
+    </div>
+</div>
+
+<div class="clear-fix"> 
+    <div class="left">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LastName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LastName)
+            @Html.ValidationMessageFor(model => model.LastName)
+        </div>
+    </div>
+
+    <div class="right">
+        <div class="editor-label">
+            @Html.Label("Hide Last Name")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LastNameHidden)
+            @Html.ValidationMessageFor(model => model.LastNameHidden)
+        </div>
+    </div>
+</div>
+
+<div class="clear-fix">
+    <div class="left">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Occupation)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Occupation)
+            @Html.ValidationMessageFor(model => model.Occupation)
+        </div>
+    </div>
+
+    <div class="right">
+        <div class="editor-label">
+            @Html.Label("Hide Occupation")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OccupationHidden)
+            @Html.ValidationMessageFor(model => model.OccupationHidden)
+        </div>
+    </div>
+</div>
+
+<div class="clear-fix">
+    <div class="left">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Country)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Country)
+            @Html.ValidationMessageFor(model => model.Country)
+        </div>
+    </div>
+
+    <div class="right">
+        <div class="editor-label">
+            @Html.Label("Hide Country")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CountryHidden)
+            @Html.ValidationMessageFor(model => model.CountryHidden)
+        </div>
+    </div>
+</div>
+
+<div class="clear-fix">
+    <div class="left">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Industry)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Industry)
+            @Html.ValidationMessageFor(model => model.Industry)
+        </div>
+    </div>
+
+    <div class="right">
+        <div class="editor-label">
+            @Html.Label("Hide Industry")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IndustryHidden)
+            @Html.ValidationMessageFor(model => model.IndustryHidden)
+        </div>
+    </div>
+</div>
+
+<div class="clear-fix">
+    <div class="right">
+        <div class="editor-label">
+            @Html.Label("Hide Connections")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HideConnections)
+            @Html.ValidationMessageFor(model => model.HideConnections)
+        </div>
+    </div>
+</div>
+
+@*<div class="editor-label">
+    @Html.LabelFor(model => model.ExperienceHidden)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.ExperienceHidden)
+    @Html.ValidationMessageFor(model => model.ExperienceHidden)
+</div>*@

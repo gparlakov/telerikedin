@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>TelerikedIn</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        <link href="~/Content/KendoUI/kendo.common.css" rel="stylesheet" />
+        <link href="~/Content/KendoUI/kendo.default.min.css" rel="stylesheet" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        <script src="~/Scripts/kendo.all.min.js" type="text/javascript"></script>
+        <script src="~/Scripts/kendo.aspnetmvc.min.js" type="text/javascript"></script>
+
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="site-title">@Html.ActionLink("TelerikedIn", "Index", "Home")</p>
+                    @*<h1>@ViewBag.Title</h1>*@
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+                    <nav>
+                        <ul id="kendo-menu">                            
+                            @if (User.IsInRole("admin"))
+                            {
+                                <li>@Html.ActionLink("Administration Page", "Index", "Admin/Main")</li>
+                            } 
+                            
+                            <li>@Html.ActionLink("Home Page", "Index", "Home")</li>                          
+                            <li>@Html.ActionLink("User Profile", "BrowseOwnProfile", "PublicProfile")</li>                        
+                            <li><a href="#">Messages</a>
+                                <ul>
+                                    <li>@Html.ActionLink("Check Messages", "MessagesView", "Messages")</li>   
+                                    <li>@Html.ActionLink("Write Message", "Compose", "Messages")</li>   
+                                </ul>
+                            </li>   
+                            
+                            <li>@Html.ActionLink("Contact me", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                        </ul>
+                        <script>
+                            $("#kendo-menu").kendoMenu();
+                        </script>                                             
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - Parlakov</p>
+                </div>
+            </div>
+        </footer>
+
+       
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

@@ -1,0 +1,70 @@
+﻿@using TelerikedIn.Model
+
+@model IEnumerable<PublicUserProfile>
+
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Show</h2>
+
+@(Html.Kendo().Grid(Model).Name("PublicUserProfile")
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(10)        
+        .Events(events => events.Error("error_handler"))
+        .Model(model => 
+        {
+            model.Id(p => p.UserId);
+            model.Field(p => p.UserId).Editable(false);
+            model.Field(p => p.ProfileId).Editable(false);
+        }) 
+        .Read(read =>read.Action("ShowOther", "PublicProfiles"))                         
+        .Update(update => update.Action("Edit", "PublicProfiles"))
+        .Destroy(update => update.Action("Delete", "PublicProfiles"))
+    )
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.UserId).Filterable(true).Width(60);
+        columns.Bound(p => p.ProfileId).Sortable(true).Width(60); 
+        columns.Bound(p=>p.FirstName);  
+        columns.Bound(p=>p.FirstNameHidden).Width(60).Title("Hide");
+        columns.Bound(p=>p.MiddleName);
+        columns.Bound(p => p.MiddleNameHidden).Width(60).Title("Hide");
+        columns.Bound(p=>p.LastName);
+        columns.Bound(p => p.LastNameHidden).Width(60).Title("Hide");
+        columns.Bound(p=>p.Occupation);
+        columns.Bound(p => p.OccupationHidden).Width(60).Title("Hide");
+        columns.Bound(p=>p.Industry);
+        columns.Bound(p => p.IndustryHidden).Width(60).Title("Hide");
+        columns.Bound(p=>p.Country);
+        columns.Bound(p => p.CountryHidden).Width(60);
+        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(100);
+    })        
+    .Editable(editable => editable.Mode(GridEditMode.InLine))    
+    .Pageable(page => page.PageSizes(true))
+    .Sortable()
+    .Scrollable()
+    .Filterable()
+    .HtmlAttributes(new { style = "height:500px;" })     
+)
+
+<script type="text/javascript">
+    function error_handler(e) {    
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function() {                        
+                        message += this + "\n";
+                    });
+                }
+            });        
+            alert(message);
+        }
+        else if (e.errorThrown) {
+            alert("Server side error has occured - TryAgain. " +
+                "If you are trying to delete user maybe you should delete connections first.")
+        }
+    }
+</script>

@@ -1,0 +1,15 @@
+﻿@model string[]
+
+@{
+    ViewBag.Title = "AddSkills";
+}
+
+<h2>AddSkills</h2>
+
+@using(@Html.BeginForm("DoAddSkill","PublicProfile",FormMethod.Get))
+{
+    @Html.Kendo().AutoComplete().Name("skills").Filter(FilterType.StartsWith).Placeholder("Type skill here").BindTo(Model).Separator(", ")
+        
+    <input type="submit" value="Add Skill" />
+    <div class="clarifying-message">Separate skills by ', '</div>
+}

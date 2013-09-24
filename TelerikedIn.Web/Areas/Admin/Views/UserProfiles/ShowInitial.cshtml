@@ -1,0 +1,58 @@
+﻿@model IEnumerable<UserProfile>
+
+@{
+    ViewBag.Title = "UserProfiles";
+}
+
+<h2>UserProfiles</h2>
+
+@(Html.Kendo().Grid<UserProfile>(Model).Name("UserProfile")
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(10)        
+        .Events(events => events.Error("error_handler"))
+        .Model(model => 
+        {
+            model.Id(p => p.UserId);
+            model.Field(p => p.UserId).Editable(false);
+        }) 
+        .Read(read =>read.Action("Show", "UserProfiles"))                 
+        .Create(update => update.Action("CreateUser","UserProfiles"))
+        .Update(update => update.Action("EditUser", "UserProfiles"))
+        .Destroy(update => update.Action("DeleteUser", "UserProfiles")
+        )
+    )
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.UserId).Width(100).Filterable(true);
+        columns.Bound(p => p.UserName).Width(200).Sortable(true);       
+        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(300);
+    })
+    .ToolBar(toolbar => toolbar.Create())
+    .Editable(editable => editable.Mode(GridEditMode.InLine))    
+    .Pageable(page => page.PageSizes(true))
+    .Sortable()
+    .Scrollable()
+    .Filterable()
+    .HtmlAttributes(new { style = "height:700px;" })     
+)
+
+<script type="text/javascript">
+    function error_handler(e) {    
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+            alert(message);
+        }
+        else if (e.errorThrown) {
+            alert("Server side error has occured - TryAgain. " +
+                "If you are trying to delete user maybe you should delete connections first.")
+        }
+    }
+</script>

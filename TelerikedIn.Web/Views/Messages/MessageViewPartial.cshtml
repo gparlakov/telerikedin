@@ -1,0 +1,7 @@
+﻿@model TelerikedIn.Model.MessageViewModel
+
+<div class="message-wrapper">    
+    <h3>From: @Model.Author</h3>
+    <h4>Title: @Model.Title</h4>
+    <p class="message-content">@Html.Raw(Model.Content)</p>
+</div>
