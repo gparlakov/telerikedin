@@ -10,6 +10,7 @@ namespace TelerikedIn.Model.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(TelerikedIn.Model.TelerikedInDb context)

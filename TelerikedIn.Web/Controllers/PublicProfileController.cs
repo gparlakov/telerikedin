@@ -37,6 +37,7 @@ namespace TelerikedIn.Web.Controllers
                     profile.UserId = WebSecurity.CurrentUserId;
 
                     telerikedInDB.PublicUserProfiles.Add(profile);
+                    telerikedInDB.SaveChanges();
 
                     return Redirect("BrowseUserProfile/" + profile.UserId);
                 }

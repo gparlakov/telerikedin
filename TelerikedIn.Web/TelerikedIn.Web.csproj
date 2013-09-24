@@ -476,6 +476,7 @@
     <Content Include="Areas\Admin\Views\UserProfiles\ResetPassword.cshtml" />
     <Content Include="Areas\Admin\Views\PublicProfiles\Show.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="lib\Kendo.Mvc.dll" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
