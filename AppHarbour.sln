@@ -5,10 +5,6 @@ VisualStudioVersion = 12.0.20827.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelerikedIn.Web", "TelerikedIn.Web\TelerikedIn.Web.csproj", "{EF8816D1-4737-46F9-826A-618D6916955C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelerikedIn.Web.Tests", "TelerikedIn.Web.Tests\TelerikedIn.Web.Tests.csproj", "{D8D6E792-8B5B-42F1-AADC-BBF8A5BF92B9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelerikedIn.Model", "TelerikedIn.Model\TelerikedIn.Model.csproj", "{4B9FF25C-EEB3-4E56-8918-A53FBD11BA08}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,14 +15,6 @@ Global
 		{EF8816D1-4737-46F9-826A-618D6916955C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF8816D1-4737-46F9-826A-618D6916955C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF8816D1-4737-46F9-826A-618D6916955C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D8D6E792-8B5B-42F1-AADC-BBF8A5BF92B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D8D6E792-8B5B-42F1-AADC-BBF8A5BF92B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D8D6E792-8B5B-42F1-AADC-BBF8A5BF92B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D8D6E792-8B5B-42F1-AADC-BBF8A5BF92B9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4B9FF25C-EEB3-4E56-8918-A53FBD11BA08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4B9FF25C-EEB3-4E56-8918-A53FBD11BA08}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4B9FF25C-EEB3-4E56-8918-A53FBD11BA08}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4B9FF25C-EEB3-4E56-8918-A53FBD11BA08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
