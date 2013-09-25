@@ -26,18 +26,18 @@
                         @Html.Partial("_LoginPartial")
                     </section>
                     <nav>
-                        <ul id="kendo-menu">                            
+                        <ul id="kendo-menu">
                             @if (User.IsInRole("admin"))
                             {
                                 <li>@Html.ActionLink("Administration Page", "Index", "Admin/Main")</li>
                             } 
                             
-                            <li>@Html.ActionLink("Home Page", "Index", "Home")</li>                          
-                            <li>@Html.ActionLink("User Profile", "BrowseOwnProfile", "PublicProfile")</li>                        
+                            <li>@Html.ActionLink("Home Page", "Index", "Home")</li>
+                            <li>@Html.ActionLink("User Profile", "BrowseOwnProfile", "PublicProfile")</li>
                             <li><a href="#">Messages</a>
                                 <ul>
-                                    <li>@Html.ActionLink("Check Messages", "MessagesView", "Messages")</li>   
-                                    <li>@Html.ActionLink("Write Message", "Compose", "Messages")</li>   
+                                    <li>@Html.ActionLink("Check Messages", "MessagesView", "Messages")</li>
+                                    <li>@Html.ActionLink("Write Message", "Compose", "Messages")</li>
                                 </ul>
                             </li>   
                             
@@ -46,7 +46,7 @@
                         </ul>
                         <script>
                             $("#kendo-menu").kendoMenu();
-                        </script>                                             
+                        </script>
                     </nav>
                 </div>
             </div>

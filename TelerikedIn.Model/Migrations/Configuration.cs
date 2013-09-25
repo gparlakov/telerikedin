@@ -5,7 +5,7 @@ namespace TelerikedIn.Model.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<TelerikedIn.Model.TelerikedInDb>
+    public class Configuration : DbMigrationsConfiguration<TelerikedIn.Model.TelerikedInDb>
     {
         public Configuration()
         {

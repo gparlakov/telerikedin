@@ -1,24 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TelerikedIn.Model
 {
     public class TelerikedInDb : DbContext
     {
+        private const string DbConnectionSettingKey = "SQLSERVER_CONNECTION_STRING";
+
         public TelerikedInDb() 
             :base("DefaultConnection")
         {
+            this.Database.Connection.ConnectionString = ConfigurationManager.AppSettings[DbConnectionSettingKey];
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
 
         public DbSet<PublicUserProfile> PublicUserProfiles { get; set; }
 
-        public DbSet<Occupation> Occupations { get; set; }        
+        public DbSet<Occupation> Occupations { get; set; }
 
         public DbSet<Connection> Connections { get; set; }
 
@@ -28,6 +29,6 @@ namespace TelerikedIn.Model
 
         public DbSet<Message> Messages { get; set; }
 
-        public DbSet<Notification> Notifications { get; set; }        
+        public DbSet<Notification> Notifications { get; set; }
     }
 }
